@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Notable|Oswald" rel="stylesheet">
+</head>
+
+<body>
+  <div class='grid-container'>
+    <div id='leftblock'></div>
+    <div id='intro'>
+        <h1>Rock Paper Scissors</h1>
+        <h2>First to a score of 5 wins!</h2>
+        <h3>Choose your Hand </h3>
+        <img src="rock_scissors_paper1.png" alt="Rock-Paper-Scissors Picture">
+    </div>
+  <div id='container'>
+      <button id='rock'></button>
+      <button id='paper'></button>
+      <button id='scissors'></button>
+  </div>
+  <div id='rightblock'></div>
+  </div>
+</body>
+
+<script>
+  let playerScore = 0, computerScore = 0, count = 0, count1 = 0, count2 = 0;
+  const results = document.querySelector('#results');
+
+  const content = document.createElement('p');
+  const scores = document.createElement('p');
+  const BlankPlacement = document.createElement('br');
+  const BlankPlacement1 = document.createElement('br');
+  const BlankPlacement2 = document.createElement('br');  
+  const finalResults = document.createElement('p');
+  const resultsBTN = document.createElement('p');
+  
+  content.classList.add('content');
+  scores.classList.add('content');
+  finalResults.classList.add('results');
+  resultsBTN.classList.add('content');
+
+  container.appendChild(content);
+  container.appendChild(finalResults);
+  container.appendChild(scores);
+  container.appendChild(BlankPlacement);
+  container.appendChild(BlankPlacement1);
+  container.appendChild(BlankPlacement2);
+  container.appendChild(resultsBTN);
+  scores.textContent = "Player Score: " + playerScore + "  Computer Score: " + computerScore;
+
+  function computerPlay(){
+    let computerChoice = ""
+    let randomInt = Math.floor((Math.random()*3)+1);
+    if (randomInt == 1){
+      return computerChoice = "rock";
+      console.log(computerPlay());
+    }
+    else if (randomInt == 2){
+      return computerChoice = "paper";
+      console.log(computerPlay());
+    }
+    else
+      return computerChoice = "scissors";
+      console.log(computerPlay());
+  }
+
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+    button.addEventListener('click', playGame)
+
+  
+
+  function playGame(e){
+    if (playerScore < 5 && computerScore < 5){
+          
+          content.textContent = playRound(button.id, computerPlay()) + '\n';
+          scores.textContent = "Player Score: " + playerScore + "  Computer Score: " + computerScore;
+        };
+        if (playerScore == 5 || computerScore == 5){
+          if (count2 == 0){
+            container.removeChild(resultsBTN);
+            container.removeChild(BlankPlacement1);
+            container.removeChild(BlankPlacement2); 
+            count2+=1;
+        }
+          if (count == 0){
+            var btn = document.createElement('Button');
+            var text = document.createTextNode('RESET');
+            btn.classList.add('resultButton');
+            btn.appendChild(text);
+            container.appendChild(btn);
+            var btnResults = document.querySelector('.resultButton');
+            btnResults.addEventListener('click', () =>{
+              playerScore = 0, computerScore = 0, count = 0, count1 = 0, count2 = 0;
+              content.textContent = "";
+              finalResults.textContent = "";
+              resultsBTN.textContent = "";
+              container.appendChild(BlankPlacement);  
+              container.appendChild(BlankPlacement1);  
+              container.appendChild(BlankPlacement2);                
+              container.appendChild(resultsBTN);
+              
+              scores.textContent = "Player Score: " + playerScore + "  Computer Score: " + computerScore;
+              container.removeChild(btn);
+            })
+          }
+          count += 1;
+          if (playerScore>computerScore){
+            finalResults.textContent = "Congratulations, you beat the computer \n";
+          } else {
+            finalResults.textContent = "Sucks, you lost to the computer :( \n";
+          }
+          }
+          }
+          });
+
+  function playRound(playerChoice, computerChoice){
+    if (count1 == 0){
+      container.removeChild(BlankPlacement);
+      count1 += 1;  
+    }
+    if (playerChoice == "rock" && computerChoice == "paper"){
+          computerScore += 1;
+          return result = "You lose, the piece of paper covers your rock.";
+        } else if (playerChoice == "rock" && computerChoice == "scissors"){
+          playerScore += 1;
+          return result = "You win, your rock crushes the scissors";
+        } else if (playerChoice == "paper" && computerChoice == "scissors"){
+          computerScore += 1;
+          return result = "You lose, your paper has been cut by scissors.";
+        } else if (playerChoice == "paper" && computerChoice == "rock"){
+          playerScore += 1;
+          return result = "You win, your paper covers the rock";
+        } else if (playerChoice == "scissors" && computerChoice == "rock"){
+          computerScore += 1;
+          return result = "You lose, your scissors has been crushed by a rock.";
+        } else if (playerChoice == "scissors" && computerChoice == "paper"){
+          playerScore += 1;
+          return result = "You win, you easily cut the paper";
+        } else {
+          return result = "It's a draw! You both chose, " + computerChoice;
+        }
+    }
+    
+</script>
+
+
+</html>

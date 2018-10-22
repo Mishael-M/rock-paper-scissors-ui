@@ -1,0 +1,81 @@
+body{
+    font-family: 'Notable', sans-serif;
+}
+
+p{
+    margin: 0;
+    font-size: 16px;
+}
+
+br{
+    height: 16px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+}
+
+#leftblock{
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    background-color: black;
+    height: 100%;
+}
+
+#rightblock{
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    background-color: black;
+    height: 100%;
+}
+
+#intro{
+    font-size: 80%;
+    grid-column: 2;
+}
+
+#container{
+    font-family: 'Oswald', sans-serif;
+    grid-column: 2;
+}
+
+img{
+    display: block;
+    width: 220px;
+    height: 220px;
+    margin: auto;
+    
+}
+
+div{
+    text-align: center;
+}
+
+#rock {
+    height: 125px;
+    width: 125px;
+    background-image: url(rock-image.png);
+    background-repeat: no-repeat;
+
+}
+
+#paper {
+    height: 125px;
+    width: 125px;
+    background-image: url(paper-image.png);
+    background-repeat: no-repeat;
+}
+
+#scissors {
+    height: 125px;
+    width: 125px;
+    background-image: url(scissors-image.png);
+    background-repeat: no-repeat;
+
+}
+
+.resultButton {
+    height: 20px;
+}
